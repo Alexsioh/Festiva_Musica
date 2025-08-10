@@ -27,12 +27,46 @@ export function css(done){
     done()
 }
 
+
+
+//FUNCIONES PARA TERMINAR DEPLOYD 
+export function html(done) {
+    src('index.html') // puedes usar 'src/**/*.html' si hay más
+        .pipe(dest('build'))
+    done()
+}
+
+export function imagenes(done) {
+    src('src/img/**/*')
+        .pipe(dest('build/img'))
+    done()
+}
+
+export function videos(done) {
+    src('src/video/**/*')
+        .pipe(dest('build/video'))
+    done()
+}
+
+
+
+
+
 export function dev(done){
     //Va a estar pendiente a cambios que sucedan en la ruta escogida y cuando suceda llamara a la funcion css que esta arriba
     //** significa que va a buscar todos los cambios de archivos .scss
     watch('src/scss/**/*.scss', css)
     watch('src/scss/**/*.js', js)
+    watch('*.html', html)
+    watch('src/img/**/*', imagenes)
+    watch('src/video/**/*', videos)
 }
 
-export const build = series(js, css);
+
+
+
+
+
+
+export const build = series(js, css, html, imagenes, videos)
 export default series(js,css,dev)
