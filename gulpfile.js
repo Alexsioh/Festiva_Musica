@@ -48,25 +48,15 @@ export function videos(done) {
     done()
 }
 
-
-
-
-
 export function dev(done){
     //Va a estar pendiente a cambios que sucedan en la ruta escogida y cuando suceda llamara a la funcion css que esta arriba
     //** significa que va a buscar todos los cambios de archivos .scss
     watch('src/scss/**/*.scss', css)
-    watch('src/scss/**/*.js', js)
+    watch('src/js/**/*.js', js)
     watch('*.html', html)
     watch('src/img/**/*', imagenes)
-    watch('src/video/**/*', videos)
+    watch('video/**/*', videos)
 }
 
-
-
-
-
-
-
 export const build = series(js, css, html, imagenes, videos)
-export default series(js,css,dev)
+export default series(build, dev)
