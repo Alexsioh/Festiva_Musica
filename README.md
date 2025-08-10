@@ -45,3 +45,17 @@ indica un nuevo comando (npm run sass) para ejecutar sass, -watch para que cuand
 
 # Cambiamos en package.js 'gulp dev' a solo 'gulp'
 - Ejecutara la funcion default y ejecutara en el orden que este escrito (js, css,dev), se podran ejecutar varias funciones gracias a importar {series}
+
+# Carpeta build
+- Suele usarse como carpeta intermedia donde se guarda el código ya procesado, pero que todavía no está optimizado o listo para producción.
+
+- Algunos proyectos la usan para debug, pruebas o salidas temporales.
+
+- Ejemplo: compilación de SCSS a CSS pero sin minificar.
+
+# Carpeta dist
+- Es el nombre más usado para el código final y listo para distribuir/deploy.
+
+- Normalmente contiene: HTML/CSS/JS minificados, Imágenes optimizadas, Archivos listos para subir a un servidor.
+
+- Netlify y muchas otras plataformas asumen que dist/ es tu carpeta de “producción”.
