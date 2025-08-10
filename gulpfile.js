@@ -34,5 +34,5 @@ export function dev(done){
     watch('src/scss/**/*.js', js)
 }
 
-export default series(js,css,dev)
 export const build = series(js, css);
+//export default series(js,css,dev)
