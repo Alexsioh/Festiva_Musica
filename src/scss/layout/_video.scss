@@ -1,0 +1,61 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+//Para usar el degradado correctamente
+@use "sass:color";
+
+.video{
+    position: relative;  //para poder posicionar los elementos manualmente
+
+    
+    min-height: 50rem; //Tamaño minimp
+    max-height: 70rem; // tamaño maximo
+    overflow: hidden; // para quitar el desborde
+
+    .overlay{
+        position: absolute;  //
+        background: linear-gradient(
+            /*El angulo de inclinacion del degradado de izquierda a derecha*/
+            270deg,
+            /*El color que quiere que acabe a la derecha y la opacidad*/
+            rgba(v.$morado, 60%),
+            /*El color que quiere que acabe a la derecha y la opacidad, ademas darken permite añadir un porcentaje mas de oscuridad*/
+            rgba( color.scale(v.$morado, $lightness: -20%), 90% )
+        );
+        inset: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    video{
+        /*Alineamos el video con el degradado*/
+        display: block;
+        width: auto;
+        @include m.desktop {
+            width: 100%;
+        }
+
+    }
+}
+
+.contenido-video{
+
+    z-index: 10; //para colocr hacia adelante el contenido texto
+
+    h2{
+        color: v.$blanco;
+        font-size: 7rem;
+    }
+
+    p{
+        background-color: v.$rosa;
+        /*display block SI se le puede agregar margin pero el contenido toma toda la pantalla*/
+        /*display inline NO se le puede agregar margin pero el contenido toma solo el tamaño del contenido exacto*/
+        /*display inline-block SI se le puede agregar margin y toma el tamaño del contenido exacto*/
+        display: inline-block;
+        padding: 1rem 2rem;
+        color: v.$blanco;
+        font-size: 2.4rem;
+        font-weight: 700;
+        margin: 0;
+    }
+}
