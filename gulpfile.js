@@ -35,3 +35,4 @@ export function dev(done){
 }
 
 export default series(js,css,dev)
+export const build = series(js, css);
